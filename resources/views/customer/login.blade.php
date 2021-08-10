@@ -31,7 +31,7 @@
             <form action="{{route('login')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="name" name="name"  class="form-control" placeholder="Email">
+                    <input type="name" name="name"  class="form-control" placeholder="Username">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <i class="fas fa-envelope"></i>
@@ -68,7 +68,7 @@
                     <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
                 </a>
                 <a href="{{url('auth/google')}}" class="btn btn-block btn-danger">
-                    <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+                    <i class="fab fa-google-plus mr-2"></i> Sign in using Google+ is xịt
                 </a>
             </div>
             <!-- /.social-auth-links -->

@@ -55,6 +55,19 @@ $(document).ready(function (){
         })
     })
 
+    $('.delete-myPost').click(function (){
+        let idPost = $(this).attr('data-id')
+        let origin = location.origin
+        $.ajax({
+            url: origin + '/postDelete/' + idPost,
+            method: 'GET',
+            type: 'json',
+            success: function (res){
+                $('#post-' + idPost).remove()
+            }
+        })
+    })
+
     $('#icon-eye').click(function (){
         let type = $('#password').attr('type')
         newType = (type === 'password') ? 'text' : 'password'
@@ -63,5 +76,36 @@ $(document).ready(function (){
         let classIcon = (type === 'password') ? 'fas fa-eye' : 'fas fa-eye-slash'
         $('#icon-slash').removeClass()
         $('#icon-slash').addClass(classIcon)
+    })
+
+    $('.addToCart').click(function (){
+        let idProduct = $(this).attr('data-id')
+        let origin = location.origin
+        $.ajax({
+            url: origin + '/low-budget/' + 'addToCart/' + idProduct,
+            method: 'GET',
+            type: 'json',
+            success: function (res) {
+                let totalCart = res.totalCart
+                $('#cart-' + idProduct).add()
+                $('#totalCart').html(totalCart)
+
+            }
+        })
+    })
+
+    $('.delete-cart').click(function (){
+        let idCart = $(this).attr('data-id')
+        let origin = location.origin
+        $.ajax({
+            url: origin + '/low-budget/' + 'deleteCart/' + idCart,
+            method: 'GET',
+            type: 'json',
+            success: function (res) {
+                let totalCart = res.totalCart
+                $('#cart-' + idCart).remove()
+                $('#total-cart').html(totalCart)
+            }
+        })
     })
 })

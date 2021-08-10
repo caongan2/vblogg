@@ -37,9 +37,14 @@
                             @endforelse
                         </td>
                         <td>
-                            <a href="{{route('user.edit', $user->id)}}" class="btn btn-primary form-control">Update</a>
                             <a href="{{route('user.profile', $user->id)}}" class="btn btn-primary form-control">View</a>
-                            <button type="button" data-id="{{$user->id}}" onclick="return confirm('Are you sure?')" class="delete-user btn btn-danger form-control">Delete</button>
+                            @can('crud')
+                                <a href="{{route('user.edit', $user->id)}}"
+                                   class="btn btn-primary form-control">Update</a>
+                                <button type="button" data-id="{{$user->id}}" onclick="return confirm('Are you sure?')"
+                                        class="delete-user btn btn-danger form-control">Delete
+                                </button>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
@@ -48,5 +53,5 @@
         </div>
         <!-- /.card-body -->
     </div>
-{{--    {{$users->links()}}--}}
+    {{--    {{$users->links()}}--}}
 @endsection

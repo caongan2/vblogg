@@ -87,10 +87,21 @@ $categories =\App\Models\Categories::all();
                                             <a href="{{route('productByCate', $category->id)}}" class="nav-link">
                                                 <i class="fas fa-arrow-right"></i>
                                                 <p>{{$category->name}}</p>
+                                                <input type="hidden" value="{{$product = \App\Models\Product::where('category_id', $category->id)->get()}}">
+                                                <span class="badge badge-info right">{{count($product)}}</span>
                                             </a>
                                         </li>
                                     @endforeach
                                 </ul>
+                                @can('crud')
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{route('addCate')}}" class="nav-link">
+                                            <p>Add New</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                @endcan
                             </li>
                         </ul>
                     </li>
@@ -106,11 +117,8 @@ $categories =\App\Models\Categories::all();
                             <li class="nav-item">
                                 <a href="{{route('product.list')}}" class="nav-link">
                                     <p>List</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <p>Add New</p>
+                                    <input type="hidden" value="{{$product = \App\Models\Product::all()}}">
+                                    <span class="badge badge-info right">{{count($product)}}</span>
                                 </a>
                             </li>
                         </ul>
@@ -120,7 +128,7 @@ $categories =\App\Models\Categories::all();
                         <a href="{{route('productOfUser',\Illuminate\Support\Facades\Auth::user()->id)}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
-                                Products By Shop
+                                My Products
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>

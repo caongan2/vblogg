@@ -46,7 +46,7 @@
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                            <a href="{{route('productOfUser', $user->id)}}" class="btn btn-primary btn-block"><b>Product By Shop</b></a>
                         </div>
                         <!-- /.card-body -->
                     </div>

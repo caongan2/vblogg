@@ -119,7 +119,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->delete();
-        return redirect()->back();
+        return response()->json(['message' => 'Delete success']);
     }
     public function productByCate($id)
     {
@@ -129,9 +129,6 @@ class ProductController extends Controller
 
     public function productOfUser($id)
     {
-        if (!Gate::allows('crud')){
-            abort(403);
-        }
         $products =Product::where('user_id',$id)->get();
         return view('shop.list',compact('products'));
     }

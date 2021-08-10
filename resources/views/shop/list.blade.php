@@ -20,12 +20,11 @@
                         <thead>
                         <tr>
                             <th></th>
-                            <th>img</th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>categories</th>
-                            {{--                            <th>Image</th>--}}
-                            <th>action</th>
+                            <th>Shop</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -36,12 +35,13 @@
                                 </td>
                                 <td><h4>{{ $product->name }}</h4></td>
                                 <td>${{ $product->price}}</td>
-                                <td>{{ $product->category['name']}}</td>
+                                <td>{{ $product->user->name}}</td>
                                 <td>
-                                    <button class="btn btn-danger">Add To Cart</button>
+                                    @cannot('crud')
+                                    <button type="button" data-id="{{$product->id}}" class="addToCart btn btn-danger">Add To Cart</button>
+                                    @endcannot
                                     @can('crud')
-                                        <a href="{{route('product.delete', $product->id)}}"
-                                           class="btn btn-danger">Delete</a>
+                                        <button data-id="{{$product->id}}" class="delete-product btn btn-danger">Delete</button>
                                         <a href="{{route('product.edit', $product->id)}}"
                                            class="btn btn-danger">edit</a>
                                     @endcan
@@ -55,5 +55,4 @@
         </div>
 
     </div>
-    <!-- /.container-fluid -->
 @endsection

@@ -33,8 +33,7 @@ return [
     'google' => [
         'client_id' => '993407506844-mghjr9ii5nn2p0jjdk8a5g41oc8d5ifb.apps.googleusercontent.com',
         'client_secret' => 't8Jq-M8YRsFBYhg4kHa2C263',
-        'redirect' => 'http://shop-low-bubgit.herokuapp.com/public/auth/callback/google',
+        'redirect' => 'http://127.0.0.1:8000/auth/callback/google',
     ],
-
 
 ];

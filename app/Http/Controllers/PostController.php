@@ -29,6 +29,6 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->comments()->delete();
         $post->delete();
-        return redirect()->back();
+        return response()->json(['message' => 'Delete success']);
     }
 }

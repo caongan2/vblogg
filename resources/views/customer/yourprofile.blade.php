@@ -106,15 +106,16 @@
                         <div class="card-header p-2">
                             <form action="{{route('status.post')}}" method="post">
                                 @csrf
-                                <label for="">Hôm nay bạn nghĩ gì {{\Illuminate\Support\Facades\Auth::user()->name}} ơi???</label>
-                                <input type="text" name="title" class="form-control" placeholder="Title" style="background-color: white; color: black">
+                                <label for="">How do you feel today
+                                    {{\Illuminate\Support\Facades\Auth::user()->name}} ???</label>
+                                <input type="text" name="title" class="form-control" value="Title" style="background-color: white; color: black">
                                 <textarea name="post" id="" cols="118" placeholder="   Your Status..." rows="5"></textarea>
                                 <input type="number" hidden name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                                 <button type="submit" class="btn btn-success">Share</button>
                             </form>
                         </div>
                         @foreach($allPosts as $posts)
-                            <div class="card-body">
+                            <div class="card-body" id="post-{{$posts->id}}">
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="activity">
                                         <!-- Post -->
@@ -124,7 +125,7 @@
                                                      src="{{asset('storage/'.$user->img)}}" alt="">
                                                 <span class="username">
                           <a href="#">{{$user->name}}</a>
-                          <a href="{{route('post.delete', $posts->id)}}" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                          <button type="button" data-id="{{$posts->id}}" class="delete-myPost float-right btn-tool"><i class="fas fa-times"></i></button>
                         </span>
                                                 <span class="description">{{$posts->created_at}}</span>
                                             </div>

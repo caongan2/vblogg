@@ -38,10 +38,10 @@
                         </td>
                         <td>
                             <a href="{{route('user.profile', $user->id)}}" class="btn btn-primary form-control">View</a>
-{{--                            @can('crud')--}}
-                            <a href="{{route('user.edit', $user->id)}}" class="btn btn-primary form-control">Update</a>
-                                <a href="{{route('user.delete', $user->id)}}" class="btn btn-primary form-control">Delete</a>
-{{--                            @endcan--}}
+                            @can('crud')
+                                <a href="{{route('user.edit', $user->id)}}" class="btn btn-primary form-control">Update</a>
+                                <button type="button" data-id="{{$user->id}}" class="delete-user btn btn-primary form-control">Delete</button>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

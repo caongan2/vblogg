@@ -36,15 +36,16 @@
             <div class="card">
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Active</a>
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Website: LowBubGet Connecting Peoples</a>
                         </li>
                     </ul>
                 </div>
                 <div class="card-header p-2">
                     <form action="{{route('status.post')}}" method="post">
                         @csrf
-                        <label for="">Hôm nay bạn nghĩ gì {{\Illuminate\Support\Facades\Auth::user()->name}} ơi???</label>
-                        <input type="text" name="title" class="form-control" placeholder="Title" style="background-color: white; color: black">
+                        <label for="">How do you feel today
+                            {{\Illuminate\Support\Facades\Auth::user()->name}} ???</label>
+                        <input type="text" name="title" class="form-control" value="Title" style="background-color: white; color: black">
                         <textarea name="post" id="" cols="145" placeholder="   Your Status..." rows="5"></textarea>
                         <input type="number" hidden name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                         <button type="submit" class="btn btn-success">Share</button>
@@ -63,7 +64,7 @@
                                         <span class="username">
                                             <a href="{{route('user.profile', $post->user->id)}}">{{$post->user->name}}</a>
                                             @if(\Illuminate\Support\Facades\Auth::user()->name == $post->user->name)
-                                            <button class="delete-post float-right btn-tool"><a href="{{route('post.delete', $post->id)}}" class="fas fa-times"></a></button>
+                                            <button type="button" data-id="{{$post->id}}" class="delete-post float-right btn-tool"><i class="fas fa-times"></i></a></button>
                                             @endif
                                         </span>
                                         <span class="description">{{$post->created_at}}</span>

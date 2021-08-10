@@ -13,8 +13,16 @@ class CategoriesController extends Controller
         return view('welcome',compact('categories'));
     }
 
+
     public function create()
     {
-        return view('');
+        return view('shop.category');
+    }
+
+    public function store(Request $request, Categories $categories)
+    {
+        $categories->name = $request->name;
+        $categories->save();
+        return redirect()->route('home');
     }
 }
