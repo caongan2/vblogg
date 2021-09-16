@@ -10,7 +10,6 @@ class SocialController extends Controller
 {
     public function redirect()
     {
-//        dd(12);
         return Socialite::driver('google')->redirect();
     }
 

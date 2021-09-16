@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Log in (v2)</title>
+    <title>Vblog | Connecting</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -74,7 +74,7 @@
             <!-- /.social-auth-links -->
 
             <p class="mb-1">
-                <a href="">I forgot my password</a>
+                <a href="{{route('forgot')}}">I forgot my password</a>
             </p>
             <p class="mb-0">
                 <a href="{{route('formRegister')}}" class="text-center">Register a new membership</a>

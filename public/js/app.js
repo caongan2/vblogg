@@ -42,6 +42,10 @@ $(document).ready(function (){
         })
     })
 
+    $('#name').keyup(function (){
+        alert(1)
+    })
+
     $('.delete-post').click(function (){
         let idPost = $(this).attr('data-id')
         let origin = location.origin

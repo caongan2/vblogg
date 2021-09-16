@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Jobs\SendMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,7 @@ class LoginController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->save();
+
         return redirect()->route('formLogin');
     }
 

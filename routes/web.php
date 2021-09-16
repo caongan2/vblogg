@@ -3,12 +3,15 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ForgotPassword;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('customer.login');
 });
+
+//Route::get('/', function (Request $request) {
+//    return "Path: " . $request->bearerToken();
+//});
+
+Route::get('forgotPass', [ForgotPassword::class, 'forgotPass'])->name('forgot');
+Route::get('/resetPass', [ForgotPassword::class, 'formResetPass'])->name('reset');
+Route::post('/reset', [ForgotPassword::class, 'resetPass'])->name('resetPass');
+Route::post('forgotPass', [ForgotPassword::class, 'sendMailResetPass'])->name('sendMail');
+
 Route::get('/login', [LoginController::class, 'showFormLogin'])->name('formLogin');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'showFormRegister'])->name('formRegister');
